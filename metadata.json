@@ -1,0 +1,6 @@
+{
+  "name": "यूनिक मेडिकल एजेन्सी - Unique Medical Agency",
+  "description": "Your Trusted Medical Store for Genuine Medicines & Healthcare Needs in Tekari, Bihar. Order via WhatsApp, check medicine availability, upload prescriptions, and consult our health tips.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
