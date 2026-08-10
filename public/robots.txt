@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://unique-medical-agency.vercel.app/sitemap.xml

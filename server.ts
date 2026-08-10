@@ -30,6 +30,65 @@ app.get("/api/health", (req, res) => {
   res.json({ status: "ok", time: new Date().toISOString() });
 });
 
+// Serve sitemap.xml directly
+app.get("/sitemap.xml", (req, res) => {
+  const publicSitemap = path.join(process.cwd(), "public", "sitemap.xml");
+  const distSitemap = path.join(process.cwd(), "dist", "sitemap.xml");
+  res.header("Content-Type", "application/xml");
+  
+  if (require("fs").existsSync(publicSitemap)) {
+    return res.sendFile(publicSitemap);
+  } else if (require("fs").existsSync(distSitemap)) {
+    return res.sendFile(distSitemap);
+  }
+  
+  res.send(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://unique-medical-agency.vercel.app/</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://unique-medical-agency.vercel.app/services</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://unique-medical-agency.vercel.app/about</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://unique-medical-agency.vercel.app/contact</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://unique-medical-agency.vercel.app/whatsapp</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://unique-medical-agency.vercel.app/gallery</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>`);
+});
+
+// Serve robots.txt directly
+app.get("/robots.txt", (req, res) => {
+  res.header("Content-Type", "text/plain");
+  res.send(`User-agent: *\nAllow: /\n\nSitemap: https://unique-medical-agency.vercel.app/sitemap.xml\n`);
+});
+
 // 2. Chat endpoint utilizing Gemini 3.5 Flash
 app.post("/api/chat", async (req, res) => {
   const { message, history } = req.body;
