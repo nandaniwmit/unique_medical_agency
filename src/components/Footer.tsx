@@ -196,7 +196,7 @@ export default function Footer({ setActiveTab, openModal }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} यूनिक मेडिकल एजेन्सी (Unique Medical Agency). All Rights Reserved. Developed by <a href="https://main.webmakerit.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 underline transition-colors">WMIT</a></p>
+          <p>© {new Date().getFullYear()} यूनिक मेडिकल एजेन्सी (Unique Medical Agency). All Rights Reserved.<a href="https://main.webmakerit.com" target="_blank" rel="noopener noreferrer" className="hover:text-slate-300 underline transition-colors">WMIT</a></p>
           <div className="flex flex-wrap gap-4 justify-center">
             <button onClick={() => openModal('privacy')} className="hover:text-slate-300 flex items-center gap-1 cursor-pointer">
               <Shield className="w-3.5 h-3.5" /> Privacy Policy
